@@ -1,6 +1,7 @@
 #+TITLE: dagre-py
 
 [[https://travis-ci.com/Vernacular-ai/dagre-py][https://img.shields.io/travis/com/Vernacular-ai/dagre-py/master.svg?style=flat-square]]
+[[https://pypi.org/project/dagre-py/][https://img.shields.io/pypi/v/dagre-py.svg?style=flat-square]]
 
 Thin python wrapper around [[https://github.com/dagrejs/dagre-d3][dagre-d3]] for building quick dags with tooltips and a
 few other niceties. It's not really generically usable right now, but you can
