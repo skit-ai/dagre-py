@@ -1,0 +1,3 @@
+#+TITLE: dagpy
+
+Thin python wrapper around [[https://github.com/dagrejs/dagre-d3][dagre-d3]].
