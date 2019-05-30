@@ -1,4 +1,4 @@
-from dagpy import __version__
+from dagre_py import __version__
 
 
 def test_version():
