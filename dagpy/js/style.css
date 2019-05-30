@@ -1,0 +1,66 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 300 14px 'Helvetica Neue', Helvetica;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
+
+.node rect,
+.node circle,
+.node ellipse {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.node text {
+  cursor: pointer;
+}
+
+.edgePath path {
+  stroke: #777;
+  fill: #777;
+  stroke-width: 1.5px;
+}
+
+#side-panel {
+  position: fixed;
+  top: -100px;
+  bottom: -100px;
+  left: -100px;
+  width: 20%;
+  padding: 130px;
+  padding-right: 30px;
+  color: #333;
+  background-color: #eee;
+  box-shadow: 0 0 10px 0 #888 inset;
+}
+
+#side-panel .title {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+#side-panel .desc {
+  font-family: monospace;
+  flex-wrap: wrap;
+  font-size: 12px;
+  width: 100%;
+  height: 90%;
+  background-color: transparent;
+  border: none;
+  resize: none;
+}
+
+#side-panel .header {
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 10px;
+}
