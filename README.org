@@ -1,3 +1,5 @@
 #+TITLE: dagpy
 
+[[https://travis-ci.com/Vernacular-ai/dagpy][https://img.shields.io/travis/com/Vernacular-ai/dagpy/master.svg?style=flat-square]]
+
 Thin python wrapper around [[https://github.com/dagrejs/dagre-d3][dagre-d3]].
