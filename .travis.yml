@@ -4,6 +4,7 @@
   install:
     - pip install tox
     - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    - source ~/.poetry/env
 
   script:
     -  tox
