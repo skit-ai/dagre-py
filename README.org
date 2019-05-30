@@ -2,4 +2,21 @@
 
 [[https://travis-ci.com/Vernacular-ai/dagpy][https://img.shields.io/travis/com/Vernacular-ai/dagpy/master.svg?style=flat-square]]
 
-Thin python wrapper around [[https://github.com/dagrejs/dagre-d3][dagre-d3]].
+Thin python wrapper around [[https://github.com/dagrejs/dagre-d3][dagre-d3]]. It's not really generically usable right
+now, but you can try something like:
+
+#+begin_src python
+  from dagpy.core import plot
+
+  plot({
+      "nodes": [
+          {"name": "A", "type": "input"},
+          {"name": "B", "type": "output", "description": "This is an output node"}
+      ],
+      "edges": [("A", "B")]
+  })
+#+end_src
+
+With the following effect:
+
+[[file:./screens/simple.png]]

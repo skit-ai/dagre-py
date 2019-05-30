@@ -1,61 +1,5 @@
 /* global d3 tippy dagreD3 data */
 
-function simplifyName (nodeName) {
-  let brk = nodeName.indexOf('__')
-  if (brk > -1) {
-    return nodeName.slice(0, brk + 10) + '...'
-  } else {
-    return nodeName
-  }
-}
-
-function clipDescription (nodeDesc) {
-  let maxlen = 200
-  if (nodeDesc.length > (maxlen - 3)) {
-    return nodeDesc.slice(0, maxlen) + '...'
-  } else {
-    return nodeDesc
-  }
-}
-
-function genDescription (node) {
-  return JSON.stringify(node.value, null, 2)
-}
-
-function timingStats (node) {
-  if (node.times.length === 1) {
-    return {
-      mu: node.times[0],
-      sigma: null
-    }
-  } else if (node.times.length > 1) {
-    let sum = node.times.reduce((acc, cur) => acc + cur)
-    let mu = sum / node.times.length
-
-    // Sample estimate
-    let sigmaSq = node.times.reduce((acc, cur) => acc + ((cur - mu) ** 2)) / (node.times.length - 1)
-    return {
-      mu: sum / node.times.length,
-      sigma: Math.sqrt(sigmaSq)
-    }
-  } else {
-    return null
-  }
-}
-
-/*
- * Generate text to go in tooltip
- */
-function genTooltip (node) {
-  let desc = genDescription(node)
-  let stats = timingStats(node)
-  if (stats) {
-    return `⌛ ${stats.mu} (σ ${stats.sigma})<br>${desc}`
-  } else {
-    return desc
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   let g = new dagreD3.graphlib.Graph().setGraph({})
 
@@ -68,19 +12,17 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (node.type === 'output') {
       bg = '#008080'
       fg = 'white'
-    } else if (!node.evaluated) {
-      fg = '#ccc'
     }
 
     let value = {
       rx: 5,
       ry: 5,
       shape: 'rect',
-      label: simplifyName(node.name),
+      label: node.name,
       labelStyle: `fill: ${fg}`,
       style: `fill: ${bg}; stroke: ${fg}`,
-      description: genDescription(node),
-      ttText: genTooltip(node)
+      description: node.description,
+      ttText: node.description
     }
     g.setNode(node.name, value)
   }
@@ -120,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   svg.call(zoom.transform, d3.zoomIdentity.translate((width - g.graph().width) / 2, (height - g.graph().height) / 2))
 
   inner.selectAll('g.node')
-    .attr('title', v => clipDescription(g.node(v).ttText))
+    .attr('title', v => g.node(v).ttText)
 
   inner.selectAll('g.node')
     .on('click', function (v) {
