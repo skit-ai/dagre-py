@@ -12,13 +12,15 @@ try something like:
 
   plot({
       "nodes": [
-          {"name": "A", "type": "input"},
-          {"name": "B", "type": "output", "description": "This is an output node"}
+          {"label": "A"},
+          {"label": "B", "description": "This is an output node"}
       ],
-      "edges": [("A", "B")]
+      "edges": [{"source": "A", "target": "B"}]
   })
 #+end_src
 
 With the following effect:
 
 [[file:./screens/simple.png]]
+
+For more description of the data that goes in, check the docstring of ~dagre_py.core.plot~ function.
