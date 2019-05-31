@@ -3,6 +3,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   let g = new dagreD3.graphlib.Graph().setGraph({})
 
+  // A few global attributes
+  if (data.attributes && data.attributes.rankdir) {
+    g.graph().rankDir = data.attributes.rankdir
+  }
+
   const disabledShade = '#ccc'
 
   for (let node of data.nodes) {

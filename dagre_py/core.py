@@ -53,6 +53,14 @@ def plot(dagre_data: Dict[str, List[Dict]], json_encoder=None, open_browser=True
       }
     }
     ```
+
+    An optional `attributes` dictionary for attaching to the main graph can
+    also be passed:
+    ```
+    {
+      "rankdir": "LR"
+    }
+    ```
     """
 
     serve_dir = pkg_resources.resource_filename("dagre_py", "js")
