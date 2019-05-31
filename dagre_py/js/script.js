@@ -3,46 +3,47 @@
 document.addEventListener('DOMContentLoaded', function () {
   let g = new dagreD3.graphlib.Graph().setGraph({})
 
+  const disabledShade = '#ccc'
+
   for (let node of data.nodes) {
-    let bg = 'white'
-    let fg = '#333'
-    if (node.type === 'input') {
-      bg = '#333'
-      fg = 'white'
-    } else if (node.type === 'output') {
-      bg = '#008080'
-      fg = 'white'
+    let defaultBg = 'white'
+    let defaultFg = '#333'
+    let fg, bg
+
+    if (node.attributes) {
+      // NOTE: `disabled` takes priority for now
+      if (node.attributes.disabled) {
+        fg = disabledShade
+      } else if (node.attributes.style) {
+        fg = node.attributes.style.stroke
+        bg = node.attributes.style.fill
+      }
     }
 
     let value = {
-      rx: 5,
-      ry: 5,
+      rx: 3,
+      ry: 3,
       shape: 'rect',
-      label: node.name,
-      labelStyle: `fill: ${fg}`,
-      style: `fill: ${bg}; stroke: ${fg}`,
-      description: node.description,
-      ttText: node.description
+      label: node.label,
+      labelStyle: `fill: ${fg || defaultFg}`,
+      style: `fill: ${bg || defaultBg}; stroke: ${fg || defaultFg}`,
+      description: node.description || node.label,
+      ttText: node.tooltip || node.description || node.label
     }
-    g.setNode(node.name, value)
-  }
-
-  let shouldDisableEdge = edge => {
-    let nodeNames = data.nodes.filter(n => !n.evaluated).map(n => n.name)
-    return nodeNames.includes(edge[0]) || nodeNames.includes(edge[1])
+    g.setNode(node.label, value)
   }
 
   for (let edge of data.edges) {
     let arrowProps = { arrowhead: 'vee' }
-    let disabledShade = '#ccc'
-    if (shouldDisableEdge(edge)) {
-      g.setEdge(edge[0], edge[1], {
+
+    if (edge.attributes && edge.attributes.disabled) {
+      g.setEdge(edge.source, edge.target, {
         arrowheadStyle: `stroke: ${disabledShade}; fill: ${disabledShade};`,
         style: `stroke: ${disabledShade}; fill: transparent;`,
         ...arrowProps
       })
     } else {
-      g.setEdge(edge[0], edge[1], arrowProps)
+      g.setEdge(edge.source, edge.target, arrowProps)
     }
   }
 

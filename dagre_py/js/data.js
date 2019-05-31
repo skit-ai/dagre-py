@@ -1,19 +1,20 @@
 let data = {
   "nodes": [
     {
-      "name": "A",
-      "type": "input"
+      "label": "A"
     },
     {
-      "name": "B",
-      "type": "output",
-      "description": "This is an output node"
+      "label": "B",
+      "description": "This is an output node",
+      "attributes": {
+        "disabled": true
+      }
     }
   ],
   "edges": [
-    [
-      "A",
-      "B"
-    ]
+    {
+      "source": "A",
+      "target": "B"
+    }
   ]
 }
