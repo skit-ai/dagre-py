@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dagre-py"
-version = "0.1.4"
+version = "0.1.5"
 description = "Thin python wrapper around dagre-d3"
 authors = ["Abhinav Tushar <abhinav@vernacular.ai>"]
 license = "MIT"
