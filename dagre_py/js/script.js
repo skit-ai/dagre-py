@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   for (let edge of data.edges) {
-    let arrowProps = { arrowhead: 'vee' }
+    let arrowProps = { arrowhead: 'vee', label: edge.label}
 
     if (edge.attributes && edge.attributes.disabled) {
       g.setEdge(edge.source, edge.target, {
