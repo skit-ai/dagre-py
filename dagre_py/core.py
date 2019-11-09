@@ -46,6 +46,7 @@ def plot(dagre_data: Dict[str, List[Dict]], json_encoder=None, open_browser=True
     {
       "source": "source-node-label",
       "target": "target-node-label",
+      "label": "edge-label",
 
       # Rest are optional
       "attributes": {
