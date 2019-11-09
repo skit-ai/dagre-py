@@ -1,7 +1,7 @@
 /* global d3 tippy dagreD3 data */
 
 document.addEventListener('DOMContentLoaded', function () {
-  let g = new dagreD3.graphlib.Graph().setGraph({})
+  let g = new dagreD3.graphlib.Graph({multigraph: true}).setGraph({})
 
   // A few global attributes
   if (data.attributes && data.attributes.rankdir) {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   for (let edge of data.edges) {
-    let arrowProps = { arrowhead: 'vee' }
+    let arrowProps = { arrowhead: 'vee', label: edge.label}
 
     if (edge.attributes && edge.attributes.disabled) {
       g.setEdge(edge.source, edge.target, {
