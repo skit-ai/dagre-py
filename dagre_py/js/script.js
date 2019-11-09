@@ -1,7 +1,7 @@
 /* global d3 tippy dagreD3 data */
 
 document.addEventListener('DOMContentLoaded', function () {
-  let g = new dagreD3.graphlib.Graph().setGraph({})
+  let g = new dagreD3.graphlib.Graph({multigraph: true}).setGraph({})
 
   // A few global attributes
   if (data.attributes && data.attributes.rankdir) {
