@@ -15,8 +15,8 @@ try something like:
           {"label": "A"},
           {"label": "B", "description": "This is an output node"}
       ],
-      "edges": [{"source": "A", "target": "B", "label": "edge1"}]
-      "edges": [{"source": "A", "target": "B", "label": "edge2"}]
+      "edges": [{"source": "A", "target": "B", "label": "edge1"},
+                {"source": "A", "target": "B", "label": "edge2"}]
   })
 #+end_src
 
