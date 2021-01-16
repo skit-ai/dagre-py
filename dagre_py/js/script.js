@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
       rx: 3,
       ry: 3,
       shape: 'rect',
-//      id: node.id,
       label: node.label,
       labelStyle: `fill: ${fg || defaultFg}`,
       style: `fill: ${bg || defaultBg}; stroke: ${fg || defaultFg}`,
