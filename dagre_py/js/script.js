@@ -29,14 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
       rx: 3,
       ry: 3,
       shape: 'rect',
-      id: node.id,
+//      id: node.id,
       label: node.label,
       labelStyle: `fill: ${fg || defaultFg}`,
       style: `fill: ${bg || defaultBg}; stroke: ${fg || defaultFg}`,
       description: node.description || node.label,
       ttText: node.tooltip || node.description || node.label
     }
-    g.setNode(node.id, value)
+    if (node.id) {
+        g.setNode(node.id, value)
+    } else {
+        g.setNode(node.label, value)
+    }
   }
 
   for (let edge of data.edges) {
