@@ -39,6 +39,7 @@ For example:
       "edges": [{"source": "A", "target": "B", "label": "edge1"},
                 {"source": "A", "target": "B", "label": "edge2"}]
   })
+#+end_src
 
 With the following effect:
 
