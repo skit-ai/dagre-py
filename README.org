@@ -36,8 +36,7 @@ For example:
           {"label": "A", "id": "A"},
           {"label": "A", "id": "B", "description": "This is an output node"}
       ],
-      "edges": [{"source": "A", "target": "B", "label": "edge1"},
-                {"source": "A", "target": "B", "label": "edge2"}]
+      "edges": [{"source": "A", "target": "B"}]
   })
 #+end_src
 
