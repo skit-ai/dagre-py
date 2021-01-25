@@ -24,5 +24,24 @@ With the following effect:
 
 [[file:./screens/multi-edges.png]]
 
+It's also possible to use an id field coupled with a label to disambiguate nodes that you want to have the same label.
+Where source and target fields in edges use id instead of label.
+For example:
+
+#+begin_src python
+  from dagre_py.core import plot
+
+  plot({
+      "nodes": [
+          {"label": "A", "id": "A"},
+          {"label": "A", "id": "B", "description": "This is an output node"}
+      ],
+      "edges": [{"source": "A", "target": "B", "label": "edge1"},
+                {"source": "A", "target": "B", "label": "edge2"}]
+  })
+
+With the following effect:
+
+[[file:./screens/duplicate-labels.png]]
 
 For more description of the data that goes in, check the docstring of ~dagre_py.core.plot~ function.
