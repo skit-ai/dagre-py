@@ -9,6 +9,6 @@ setup(
     packages=['dagre_py'],  #same as name
     install_requires=[],    #external packages as dependencies
     package_data={
-        '': ['*.js']
+        '': ['*.js', '*.html', '*.css']
     }
 )
