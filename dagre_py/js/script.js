@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
       description: node.description || node.label,
       ttText: node.tooltip || node.description || node.label
     }
-    g.setNode(node.label, value)
+    if (node.id) {
+        g.setNode(node.id, value)
+    } else {
+        g.setNode(node.label, value)
+    }
   }
 
   for (let edge of data.edges) {
