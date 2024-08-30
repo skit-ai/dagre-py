@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
       description: node.description || node.label,
       ttText: node.tooltip || node.description || node.label
     }
-    if (node.id) {
+    if ("id" in node) {
         g.setNode(node.id, value)
     } else {
         g.setNode(node.label, value)
